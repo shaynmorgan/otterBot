@@ -19,7 +19,7 @@ const GUILD_ID = "1030336325175492688"
 const client = new Discord.Client({
     intents: [
         GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildVoiceStates
+        GatewayIntentBits.GuildVoiceStates,
     ]
 })
 
