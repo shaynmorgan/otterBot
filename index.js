@@ -1,8 +1,9 @@
 const Discord = require("discord.js")
 const dotenv = require("dotenv")
+const GatewayIntentBits = require("discord.js")
 
 const { REST } = require("@discordjs/rest")
-const { Routes } = require("@discord-api-types/v9")
+const { Routes } = require("discord-api-types/v9")
 const fs = require("fs")
 const { Player } = require("discord-player")
 
@@ -17,8 +18,8 @@ const GUILD_ID = "1030336325175492688"
 
 const client = new Discord.Client({
     intents: [
-        "GUILDS",
-        "GUILD_VOICE_STATES"
+        GatewayIntentBits.GUILDS,
+        GatewayIntentBits.GUILD_VOICE_STATES
     ]
 })
 
@@ -44,7 +45,7 @@ if(LOAD_SLASH) {
     console.log("Deploying slash commands")
     rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {body: commands})
     .then(() => {
-        console.log("Success loaded")
+        console.log("Successfully loaded")
         process.exit(0)
     })
     .catch((err) => {
